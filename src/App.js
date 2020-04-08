@@ -11,7 +11,7 @@ class App extends Component {
   // 2. make exact match 
   render() {
     return (
-      <BrowserRouter>
+      <BrowserRouter>  
         <div className="App">
           <Navbar />
           <Route exact path='/' component={Home} />
