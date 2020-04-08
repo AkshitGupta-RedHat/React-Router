@@ -1,45 +1,27 @@
 import React, { Component } from 'react'
-import Todos from './todos'
-import AddTodo from './AddTodo';
-
+import Navbar from './components/navbar'
+import { BrowserRouter, Route } from 'react-router-dom'
+import Home from './components/home'
+import Contact from './components/contact'
+import About from './components/about'
 class App extends Component {
-  state = {
-    todos:[
-      {id: 1, content: 'buy some milk'},
-      {id: 2, content: 'buy some cololate'}
-    ]
-  }
-deleteTodo= (id) =>{
-  console.log("delete invoked  " + id); 
-  // parameter before arrow funtion is the parameter which we use inside 
-  const todos = this.state.todos.filter( todo => {
-    return todo.id !== id
-  });
-  this.setState({
-    todos
- 
-  })
-}
- 
-AddTodo = (todo) => {
-  todo.id = Math.random();
-  let todos = [...this.state.todos, todo];
-  this.setState({
-    todos
-  })
-}
+  // '/' is the defualt route so it is always there when we move to any rooute 
+  
   render() {
     return (
-  <div className= "App container">
-    <h1  className="center blue-text">TODOS LIST</h1>
-    <Todos todos={this.state.todos} deleteTodo ={this.deleteTodo}/>
-    <AddTodo addTodo={this.AddTodo}/>
- 
-  </div>
-    );
+      <BrowserRouter>
+        <div className="App">
+          <Navbar />
+          <Route path='/' component={Home} />
+          <Route path='/contact' component={Contact} />
+          <Route path='/about' component={About} />
+        </div>
+      </BrowserRouter>
+    )
+
   }
 
 }
-  
+
 
 export default App;
