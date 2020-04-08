@@ -6,13 +6,15 @@ import Contact from './components/contact'
 import About from './components/about'
 class App extends Component {
   // '/' is the defualt route so it is always there when we move to any rooute 
-  
+  // '/' to avoid this we HAVE 2 approach 
+  // 1. change it '/home'
+  // 2. make exact match 
   render() {
     return (
       <BrowserRouter>
         <div className="App">
           <Navbar />
-          <Route path='/' component={Home} />
+          <Route exact path='/' component={Home} />
           <Route path='/contact' component={Contact} />
           <Route path='/about' component={About} />
         </div>
