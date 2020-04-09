@@ -9,6 +9,8 @@ class App extends Component {
   // '/' to avoid this we HAVE 2 approach 
   // 1. change it '/home'
   // 2. make exact match 
+
+  
   render() {
     return (
       <BrowserRouter>  
