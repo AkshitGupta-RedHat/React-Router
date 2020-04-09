@@ -1,12 +1,46 @@
-import React  from 'react'
+import React,  {Component} from 'react'
+import axios from 'axios'
 
-const Home = () => {
- return (
-     <div className="container">
-     <h2 className="center">Home</h2>
-    <p>It’s a normal phenomenon to talk about sex with your partner! Descriptive paragraphs may be sent to a guy to turn him on or say to him that you want to change something. Are you too shy to talk about sex, sexual desires or ideas with your boyfriend? Copy and paste the most suitable for you sexting paragraphs and send him!</p>
-    </div>
- )
+//Functional component can not use lifecycle hooks
+class Home extends Component {
+    //Good time to get an external data is uing hte lifecyle hook when componenet did mount
+    
+    state ={
+        posts: []
+    }
+    componentDidMount(){
+            axios.get('https://jsonplaceholder.typicode.com/posts')
+            .then(res => {
+                console.log(res);
+                this.setState({
+                    posts: res.data.slice(0,10)
+                })
+            })
+    }
+    render(){
+        const { posts }= this.state;
+        const postList = posts.length ? (
+            posts.map(post => {
+                return (
+                    <div className = "post card" key={post.id}>
+                        <div className="card content">
+                          <span className="card-title">{post.title}</span>  
+                          <p>{post.body}</p>
+                        </div>
+                    </div>
+                )
+            })
+        ) : (
+            <div className="center">No posts here</div>
+        )
+        return (
+            <div className="container">
+            <h2 className="center">Home</h2>
+              {postList}
+             </div>
+        )
+    }
+
 }
 
 export default Home
