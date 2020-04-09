@@ -13,6 +13,7 @@ class App extends Component {
     return (
       <BrowserRouter>  
         <div className="App">
+        {/* So here Navbar is not receiving any routes */}
           <Navbar />
           <Route exact path='/' component={Home} />
           <Route path='/contact' component={Contact} />
