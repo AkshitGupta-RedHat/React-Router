@@ -9,6 +9,7 @@ class Home extends Component {
         posts: []
     }
     componentDidMount(){
+            // axios.get returns a promise
             axios.get('https://jsonplaceholder.typicode.com/posts')
             .then(res => {
                 console.log(res);
@@ -16,17 +17,18 @@ class Home extends Component {
                     posts: res.data.slice(0,10)
                 })
             })
-    }
+       }
     render(){
         const { posts }= this.state;
         const postList = posts.length ? (
             posts.map(post => {
-                return (
+                return (                 
                     <div className = "post card" key={post.id}>
-                        <div className="card content">
+                    {/* Below div is not required */}
+                         <div className="card content">
                           <span className="card-title">{post.title}</span>  
                           <p>{post.body}</p>
-                        </div>
+                          </div>      
                     </div>
                 )
             })
@@ -36,7 +38,7 @@ class Home extends Component {
         return (
             <div className="container">
             <h2 className="center">Home</h2>
-              {postList}
+               {postList}
              </div>
         )
     }
