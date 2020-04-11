@@ -19,33 +19,33 @@ class Post extends Component {
             })
     }
     render() {
-        const post  = this.poststate.post;
-        const postList = post.length ? (
-            post.map(post => {
+     //   const post  = this.poststate.post;
+        // const postList = post.length ? (
+        //     post.map(post => {
 
-                return (
-                    <div className="post card" key={post.id}>
-                        {/* Below div is not required */}
-                        <div className="card content">
+        //         return (
+        //             <div className="post card" key={post.id}>
+        //                 {/* Below div is not required */}
+        //                 <div className="card content">
 
-                            <span className="card-title">{this.poststate.post.title}</span>
+        //                     <span className="card-title">{this.poststate.post.title}</span>
 
-                            <p>{post.body}</p>
-                        </div>
-                    </div>
-                )
-            })
-        ) : (
-                <div className="center">No posts here</div>
-            )
+        //                     <p>{post.body}</p>
+        //                 </div>
+        //             </div>
+        //         )
+        //     })
+        // ) : (
+        //         <div className="center">No posts here</div>
+        //     )
         return (
             <div className="post card">
             {/* Below div is not required */}
             <div className="card content">
 
-                <span className="card-title">{this.poststate.post}</span>
+                {/* <span className="card-title">{this.poststate.post}</span> */}
 
-                <p>{postList}</p>
+                {/* <p>{postList}</p> */}
             </div>
         </div>
         )

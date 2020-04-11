@@ -5,6 +5,7 @@ import Home from './components/home'
 import Contact from './components/contact'
 import About from './components/about'
 import Post from "./components/post";
+import './index.css';
 class App extends Component {
  //Route Parameters
  // Usually see them on URLs for individual records
