@@ -29,7 +29,7 @@ class Home extends Component {
                     <div className = "post card" key={post.id}>
                     {/* Below div is not required */}
                          <div className="card content">
-                            <Link to = {'/'+ post.id}>
+                            <Link to = {'/post/'+ post.id}>
                                <span className="card-title">{post.title}</span> 
                             </Link> 
                           <p>{post.body}</p>
@@ -41,7 +41,7 @@ class Home extends Component {
             <div className="center">No posts here</div>
         )
         return (
-            <div className="container">
+             <div className="container">
             <h2 className="center">Home</h2>
                {postList}
              </div>

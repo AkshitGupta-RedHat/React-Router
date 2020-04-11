@@ -2,13 +2,13 @@ import React, { Component } from 'react'
 import axios from 'axios'
 
 class Post extends Component {
-    state = {
+    poststate = {
         post: null
     }
 
       componentDidMount() {
         // axios.get returns a promise
-        let id = this.props.match.params.post;
+        let id = this.props.match.params.post_id;
         axios.get('https://jsonplaceholder.typicode.com/posts/' + id)
             .then(res => {
                 console.log(res);
@@ -19,7 +19,7 @@ class Post extends Component {
             })
     }
     render() {
-        const post  = this.state.post;
+        const post  = this.poststate.post;
         const postList = post.length ? (
             post.map(post => {
 
@@ -28,7 +28,7 @@ class Post extends Component {
                         {/* Below div is not required */}
                         <div className="card content">
 
-                            <span className="card-title">{post.title}</span>
+                            <span className="card-title">{this.poststate.post.title}</span>
 
                             <p>{post.body}</p>
                         </div>
@@ -39,10 +39,15 @@ class Post extends Component {
                 <div className="center">No posts here</div>
             )
         return (
-            <div className="container">
-                <h2 className="center">Home</h2>
-                {postList}
+            <div className="post card">
+            {/* Below div is not required */}
+            <div className="card content">
+
+                <span className="card-title">{this.poststate.post}</span>
+
+                <p>{postList}</p>
             </div>
+        </div>
         )
     }
 

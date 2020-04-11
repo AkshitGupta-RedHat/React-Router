@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Navbar from './components/navbar'
-import { BrowserRouter, Route } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Home from './components/home'
 import Contact from './components/contact'
 import About from './components/about'
@@ -23,10 +23,14 @@ class App extends Component {
         <div className="App">
         {/* So here Navbar is not receiving any routes */}
           <Navbar />
-          <Route exact path='/' component={Home} />
-          <Route path='/contact' component={Contact} />
-          <Route path='/about' component={About} />
-          <Route path='/:post' component={Post} />
+          {/* Since the post id is dynamic it can also be contact or about
+          so eithe we can use /post/:post_id or we can use the switch tag  */}
+          <Switch>
+            <Route exact path='/' component={Home} />
+            <Route path='/contact' component={Contact} />
+            <Route path='/about' component={About} />
+            <Route path='/post/:post_id' component={Post} />
+          </Switch>
         </div>
       </BrowserRouter>
     )
