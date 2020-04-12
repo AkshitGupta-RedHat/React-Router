@@ -52,4 +52,9 @@ class Post extends Component {
     }
 
 }
+
+const mapStateToProps = (state, ownProps) => {
+    let id = ownProps.match.params.post_id;
+    
+}
 export default Post
