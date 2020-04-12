@@ -1,60 +1,36 @@
 import React, { Component } from 'react'
-import axios from 'axios'
+import {connect} from 'react-redux'
+
 
 class Post extends Component {
-    poststate = {
-        post: null
-    }
-
-      componentDidMount() {
-        // axios.get returns a promise
-        let id = this.props.match.params.post_id;
-        axios.get('https://jsonplaceholder.typicode.com/posts/' + id)
-            .then(res => {
-                console.log(res);
-                this.setState({
-                    post: res.data
-                })
-                console.log(this.state.post.body)
-            })
-    }
     render() {
-     //   const post  = this.poststate.post;
-        // const postList = post.length ? (
-        //     post.map(post => {
-
-        //         return (
-        //             <div className="post card" key={post.id}>
-        //                 {/* Below div is not required */}
-        //                 <div className="card content">
-
-        //                     <span className="card-title">{this.poststate.post.title}</span>
-
-        //                     <p>{post.body}</p>
-        //                 </div>
-        //             </div>
-        //         )
-        //     })
-        // ) : (
-        //         <div className="center">No posts here</div>
-        //     )
-        return (
-            <div className="post card">
-            {/* Below div is not required */}
-            <div className="card content">
-
-                {/* <span className="card-title">{this.poststate.post}</span> */}
-
-                {/* <p>{postList}</p> */}
+        console.log(this.props);
+       const post  = this.props.post ? (
+            <div className="post">
+                {/* Below div is not required */}
+                <h4 className="center">{this.props.post.title}</h4>>
+                <p>{this.props.post.body}</p>
             </div>
-        </div>
+            
+        ) : (
+                <div className="center">No posts here</div>
+            )
+        return (
+            <div className="container">
+            {/* Below div is not required */}
+                {post}
+            </div>
+       
         )
     }
 
 }
-
+// ownProps contains the id of the post so that we can find the dat corresponding to it
 const mapStateToProps = (state, ownProps) => {
+   
     let id = ownProps.match.params.post_id;
-    
+    return {
+        post : state.posts.find(post => post.id === id )
+    }
 }
-export default Post
+export default connect(mapStateToProps)(Post)
