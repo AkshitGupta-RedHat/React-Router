@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-
+import { deletePost } from '../Action/postAction'
 
 class Post extends Component {
      handleClick = () =>{
@@ -50,7 +50,7 @@ const mapStateToProps = (state, ownProps) => {
 // in this function we are returning a method or function which is expecting a id and then dispatching which a function of redux
 const mapDeleteToProps = (dispatch) => {
     return {
-        deletePost: (id) => {dispatch({type:'DELETE_POST', id: id}) }
+        deletePost: (id) => {dispatch(deletePost(id)) }
     }
 }
 export default connect(mapStateToProps, mapDeleteToProps)(Post)
